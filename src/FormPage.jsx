@@ -181,6 +181,7 @@ function FormPage() {
       <div>
         Name: <input type="text" placeholder="name.." onChange={(e) => setName(e.target.value)} />
         Age: <input type="number" placeholder="age.." onChange={(e) => setAge(e.target.value)} />
+        Image : <input type="file" />
         <button onClick={submitdatas}>Submit Data</button>
       </div>
       {message && <div>{message}</div>}
@@ -214,6 +215,7 @@ function FormPage() {
 }
 
 export default FormPage;
+
 
 
 
