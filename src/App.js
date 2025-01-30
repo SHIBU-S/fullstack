@@ -1,11 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
-import Register from './Register';
+import Component1 from './Component1';
+import Reduxpage from './Reduxpage';
+import UseReducer from './UseReducer';
+import FormPage from './FormPage';
 
 function App() {
   return (
     <div className="App">
-        <Register/>
+        {/* <FormPage/> */}
+
+        {/* <Component1/> */}
+        {/* <UseReducer/> */}
+        <Reduxpage/>
+        
     </div>
   );
 }
