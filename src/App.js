@@ -1,10 +1,11 @@
 import './App.css';
-import Register from './Register';
+import ListTable from './ListTable';
+import Reduxpage from './Reduxpage';
 
 function App() {
   return (
     <div className="App">
-        <Register/>
+        <ListTable/>
     </div>
   );
 }

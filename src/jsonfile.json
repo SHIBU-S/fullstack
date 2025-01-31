@@ -1,0 +1,44 @@
+[
+    {
+        "Name" : "Shibu",
+        "Age" : 21,
+        "Gender" : "Male",
+        "State" : "Kerala"
+    },
+    {
+        "Name" : "Shibitha",
+        "Age" : 19,
+        "Gender" : "Female",
+        "State" : "Kerala"
+    },
+    {
+        "Name" : "Deva",
+        "Age" : 40,
+        "Gender" : "Male",
+        "State" : "Andhra Pradesh"
+    },
+    {
+        "Name" : "Kumaran",
+        "Age" : 50,
+        "Gender" : "Male",
+        "State" : "Tamilnadu"
+    },
+    {
+        "Name" : "Sheeba",
+        "Age" : 40,
+        "Gender" : "Female",
+        "State" : "Kerala"
+    },
+    {
+        "Name" : "Siva",
+        "Age" : 61,
+        "Gender" : "Male",
+        "State" : "Tamilnadu"
+    },
+    {
+        "Name" : "Smriti",
+        "Age" : 15,
+        "Gender" : "Female",
+        "State" : "Telungana"
+    }
+]
