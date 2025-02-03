@@ -1,3 +1,3 @@
-export const setFilteredData = (type) => ({
-    type: type
-});
+// export const setFilteredData = (type) => ({
+//     type: type
+// });

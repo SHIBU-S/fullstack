@@ -80,17 +80,35 @@
 
 
 
-import React from "react";
+
+
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import jsondatas from './jsonfile.json';
-import { setFilteredData } from "./Counter";
+import { setFilteredData,setvalue,setdatas } from "./Counter";
 
 const ListTable = () => {
   const dispatch = useDispatch();
   const filteredData = useSelector((state) => state.counte_r.jsondatas);
+  const value = useSelector((state) => state.counte_r.value);
+  const operationname = useSelector((state) => state.counte_r.operationname);
+
+  const [nametodelete,setnametodelete] = useState("");
+  const [nametofilter,setnametofilter] = useState("");
+  const [nametosearch,setnametosearch] = useState("");
 
   return (
       <>
+
+        Enter Name : <input type="text" placeholder="name.." onChange={(e)=>setnametodelete(e.target.value)} />  
+                    <button onClick={()=>dispatch(setdatas({name : nametodelete,type : "Delete"}))}>Delete Datas</button> <br />
+
+        Enter Name : <input type="text" placeholder="name.." onChange={(e)=>setnametofilter(e.target.value)} />  
+                    <button onClick={()=>dispatch(setdatas({name : nametofilter,type : "Filter"}))}>Filter Datas</button> <br />
+
+        Enter Name : <input type="text" placeholder="name.." onChange={(e)=>setnametosearch(e.target.value)} />  
+                    <button onClick={()=>dispatch(setdatas({name : nametosearch,type : "Search"}))}>Search Datas</button>
+
         <table>
                 <thead>
                     <tr>
@@ -151,6 +169,11 @@ const ListTable = () => {
                     </tbody>
                 </table>
             )}
+
+<br /><br />
+                <p>Operation Name : {operationname}</p>    <p>{value}</p>
+            <button onClick={()=>dispatch(setvalue({ type : "Addition" }))}>Increment +1</button> 
+            <button onClick={()=>dispatch(setvalue({ type : "Subtraction" }))}>Decrement -1</button> 
       </>
   );
 };
