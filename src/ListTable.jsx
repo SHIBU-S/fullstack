@@ -88,17 +88,29 @@ import jsondatas from './jsonfile.json';
 import { setFilteredData,setvalue,setdatas } from "./Counter";
 
 const ListTable = () => {
+    const jsondatass = useSelector((state) => state.counte_r.jsondatas);
   const dispatch = useDispatch();
   const filteredData = useSelector((state) => state.counte_r.jsondatas);
   const value = useSelector((state) => state.counte_r.value);
   const operationname = useSelector((state) => state.counte_r.operationname);
 
+  const [nametoinsert,setnametoinsert] = useState("");
+  const [agetoinsert,setagetoinsert] = useState("");
+  const [gendertoinsert,setgendertoinsert] = useState("");
+  const [statetoinsert,setstatetoinsert] = useState("");
+
   const [nametodelete,setnametodelete] = useState("");
   const [nametofilter,setnametofilter] = useState("");
   const [nametosearch,setnametosearch] = useState("");
 
+
   return (
       <>
+        Enter Name : <input type="text" placeholder="name.." onChange={(e)=>setnametoinsert(e.target.value)} />  
+        Enter Age : <input type="number" placeholder="age.." onChange={(e)=>setagetoinsert(e.target.value)} />  
+        Enter Gender : <input type="text" placeholder="gender.." onChange={(e)=>setgendertoinsert(e.target.value)} />  
+        Enter State : <input type="text" placeholder="state.." onChange={(e)=>setstatetoinsert(e.target.value)} />  
+                    <button onClick={()=>dispatch(setdatas({Name : nametoinsert,Age : Number(agetoinsert), Gender : gendertoinsert,State : statetoinsert,type : "Insert"}))}>Insert Datas</button> <br />
 
         Enter Name : <input type="text" placeholder="name.." onChange={(e)=>setnametodelete(e.target.value)} />  
                     <button onClick={()=>dispatch(setdatas({name : nametodelete,type : "Delete"}))}>Delete Datas</button> <br />
@@ -147,6 +159,7 @@ const ListTable = () => {
                 By State-Kerala
             </button>
 
+            {/* <p>{`The searched name `+operationname}</p> */}
             {filteredData.length>0 && (
                 <table>
                     <thead>
@@ -174,17 +187,11 @@ const ListTable = () => {
                 <p>Operation Name : {operationname}</p>    <p>{value}</p>
             <button onClick={()=>dispatch(setvalue({ type : "Addition" }))}>Increment +1</button> 
             <button onClick={()=>dispatch(setvalue({ type : "Subtraction" }))}>Decrement -1</button> 
+            <button onClick={()=>dispatch(setvalue({ type : "Reset" }))}>Reset</button>     
+
       </>
   );
 };
 
 export default ListTable;
-
-
-
-
-
-
-
-
 

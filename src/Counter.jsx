@@ -70,33 +70,60 @@ const counterSlice = createSlice({
         state.value -= 1;
         state.operationname = "Subtraction";
       }
+      else if(action.payload.type === "Reset")
+      {
+        state.value = 0;
+        state.operationname = "Reset";
+      }
       else
       {
         state.value;
       }
     },
 
- 
+      
     setdatas : (state,action) => {
       if(!action.payload.name){
-        alert(`Please enter a name for ${action.payload.type}..`);
+        alert(`Please fill a name for ${action.payload.type}..`);
+      }
+      else if(action.payload.type === "Insert"){
+        if(!action.payload.Name || !action.payload.Age || !action.payload.Gender || !action.payload.State){
+          alert(`Please enter a name for ${action.payload.type}..`);
+        }
+        else{
+          const newEntry = {
+            Name: action.payload.Name,
+            Age : Number(action.payload.Age),
+            Gender : action.payload.Gender,
+            State : action.payload.State
+          };
+          state.jsondatas.push(newEntry);
+          alert(`${action.payload.Name} Details successfully inserted..`);
+        }
       }
       else if(action.payload.type === "Delete"){
-        state.jsondatas = jsondatas.filter((delname) => delname.Name.toLocaleLowerCase() !== action.payload.name.toLocaleLowerCase());
-        alert(`${action.payload.name} Details Successfully deleted..`);
+        const nametodelete = action.payload.name.toLocaleLowerCase();
+        const nameexists = state.jsondatas.map((totalnames) => totalnames.Name.toLocaleLowerCase() === nametodelete);
+        if(!nameexists){
+          alert(`Please enter a valid name..`);
+        }
+        else{
+          state.jsondatas = jsondatas.filter((delname) => delname.Name.toLocaleLowerCase() !== action.payload.name.toLocaleLowerCase());
+          alert(`${action.payload.name} Details Successfully deleted..`);
+        }
       }
       else if(action.payload.type === "Filter"){
         state.jsondatas = jsondatas.filter((filname) => filname.Name.toLocaleLowerCase() === action.payload.name.toLocaleLowerCase());
-        alert(`${action.payload.name} Details Successfully filtered..`);
       }
       else if(action.payload.type === "Search"){
         state.jsondatas = jsondatas.filter((searchname) => searchname.Name.toLocaleLowerCase().includes(action.payload.name.toLocaleLowerCase()));
-        alert(`${action.payload.name} Details Successfully searched..`);
+        state.operationname = action.payload.name;
       }
       else{
         alert("None");
       }
     }
+    
   },
 });
 
