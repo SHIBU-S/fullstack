@@ -22,7 +22,7 @@ function App() {
 
   return (
     <div className="App">
-        {/* <ListTable/> */}
+        <ListTable/>
 
       <Routes>
             {/* --------------Dynamic Routing */}
