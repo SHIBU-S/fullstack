@@ -10,3 +10,13 @@ table{
   th{
     background-color: #b2aec2;
   }
+
+
+
+  @media (min-width: 1400px){
+    table {
+      max-width: 1600px;
+      margin: auto; 
+    }
+  }
+  
